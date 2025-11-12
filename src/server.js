@@ -1,88 +1,77 @@
 'use strict';
 
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
 const express = require('express');
+const cors = require('cors');
 const helmet = require('helmet');
-const path = require('path');
-const { Glob } = require('glob');
-const mongoose = require('mongoose');
-
-const config = require('./../config');
+const authenticate = require('./middlewares/authenticate');
+const authorize = require('./middlewares/authorize');
+const createProxy = require('./middlewares/proxy');
 
 class Server {
-    constructor() {
+    constructor(config) {
+        this.config = config;
         this.app = express();
     }
 
     setupMiddleware() {
-        this.app.use(cookieParser());
-        this.app.use(bodyParser.json());
-        this.app.use(
-            bodyParser.urlencoded({
-                extended: true,
-            })
-        );
-        this.app.use(
-            cors({
-                origin: (origin, cb) => {
-                    if (!origin || config.cors.includes(origin)) {
-                        cb(null, true);
-                    } else {
-                        cb(new ForbiddenError().message);
-                    }
-                },
-            })
-        );
         this.app.use(helmet());
+        this.app.use(cors());
+        this.app.use(express.json());
+    }
+
+    setupAuth() {
+        const skipAuth = (req, res, next) => {
+            if (
+                req.path === '/healthcheck' ||
+                (req.method === 'POST' && req.path === '/v1/user/login')
+            ) {
+                return next();
+            }
+            return authenticate(req, res, next);
+        };
+
+        this.app.use(skipAuth);
+        this.app.use(authorize);
     }
 
     setupEndpoints() {
-        const routes = new Glob('src/routes/*.route.js', {});
+        this.app.use('/v1/user*', createProxy('usersApi'));
+        this.app.use('/v1/users*', createProxy('usersApi'));
+        this.app.use('/v1/role*', createProxy('usersApi'));
+        this.app.use('/v1/permission*', createProxy('usersApi'));
 
-        for (const route of routes) {
-            const basePath = path.basename(route);
-            const Route = require(`./routes/${basePath}`);
+        this.app.use('/v1/patient*', createProxy('patientApi'));
+        this.app.use('/v1/case*', createProxy('patientApi'));
+        this.app.use('/v1/informant*', createProxy('patientApi'));
 
-            new Route(this.app).load();
-        }
-    }
-
-    async setupDatabase() {
-        try {
-            await mongoose.connect(config.database.connectionString);
-            console.info('Database connected');
-        } catch (error) {
-            console.error(error);
-            this.exit();
-        }
+        this.app.use('/v1/facility*', createProxy('facilityApi'));
+        this.app.use('/v1/facilities*', createProxy('facilityApi'));
+        this.app.use('/v1/department*', createProxy('facilityApi'));
+        this.app.use('/v1/ward*', createProxy('facilityApi'));
+        this.app.use('/v1/room*', createProxy('facilityApi'));
+        this.app.use('/v1/bed*', createProxy('facilityApi'));
     }
 
     async start() {
-        const port = config.port;
+        const port = this.config.port;
 
-        await this.setupDatabase();
         this.setupMiddleware();
-        this.setupEndpoints();
 
         this.app.get('/healthcheck', (_req, res) => {
             res.send('ok');
         });
 
-        this.app.use((error, _req, res, _next) => {
-            res.status(error.statusCode);
-            res.send(error);
-        });
+        this.setupAuth();
+        this.setupEndpoints();
 
         this.instance = await this.app.listen(port);
-        console.info(`Server started at port ${port}`);
+        console.info(`MAGI API Gateway running on port ${port}`);
     }
 
     exit() {
         if (this.instance) {
             this.instance.close();
-            console.info('Instance terminated');
+            console.info('Gateway instance terminated');
         }
     }
 }

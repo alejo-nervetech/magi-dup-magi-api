@@ -1,14 +1,14 @@
 'use strict';
 
-const BaseError = require('./base.js');
+const BaseError = require('./base.error');
 
 class AuthenticationFailureError extends BaseError {
-    constructor(message = undefined) {
-        return super({
+    constructor(message = 'Invalid credentials') {
+        super(message);
+        this.statusCode = 401;
+        this.details = {
             code: 'authentication_failure',
-            message: message || 'Invalid credentials',
-            statusCode: 401,
-        });
+        };
     }
 }
 
