@@ -4,41 +4,28 @@ require('dotenv').config();
 
 const {
     PORT,
-    CORS_ORIGIN,
-    DB_BASIC_AUTH,
-    DB_NAME,
-    DB_HOST,
-    DB_PORT,
-    DB_USER,
-    DB_PASSWORD,
-    JWT_TOKEN,
     NODE_ENV,
+    CORS_ORIGIN,
+    JWT_TOKEN,
+    SERVICE_SECRET,
+    USERS_API_URL,
+    PATIENT_API_URL,
+    FACILITY_API_URL,
 } = process.env;
 
-const dbAuth = () => {
-    if (DB_USER && DB_PASSWORD) {
-        return `${DB_USER}:${DB_PASSWORD}@`;
-    }
-
-    return '';
-};
-
 module.exports = {
-    port: parseInt(PORT) || 30000,
-    database: {
-        host: DB_HOST,
-        port: parseInt(DB_PORT) || 27017,
-        name: DB_NAME,
-        username: DB_USER,
-        password: DB_PASSWORD,
-        basicAuth: DB_BASIC_AUTH,
-        connectionString: `mongodb://${dbAuth()}${DB_HOST}:${DB_PORT}/${DB_NAME}`,
-    },
+    port: PORT || 3000,
+    nodeEnv: NODE_ENV || 'development',
+    cors: CORS_ORIGIN ? CORS_ORIGIN.split(',') : ['http://localhost:3000'],
     encryption: {
-        saltRounds: 10,
-        jwtExpiration: '24h',
-        jwtToken: JWT_TOKEN,
+        jwt: {
+            jwtToken: JWT_TOKEN,
+        },
     },
-    cors: CORS_ORIGIN ? CORS_ORIGIN.split(',') : [],
-    env: NODE_ENV || 'development',
+    serviceSecret: SERVICE_SECRET,
+    services: {
+        usersApi: USERS_API_URL || 'http://localhost:3001',
+        facilityApi: FACILITY_API_URL || 'http://localhost:3002',
+        patientApi: PATIENT_API_URL || 'http://localhost:3003',
+    },
 };

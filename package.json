@@ -1,53 +1,31 @@
 {
-    "name": "base-expressjs",
+    "name": "magi-api-gateway",
     "version": "1.0.0",
-    "description": "A boilerplate repository for ExpressJS projects",
+    "description": "API Gateway for MAGI Healthcare Facility Management System",
     "main": "index.js",
     "scripts": {
         "build": "npm install && npm prune",
         "dev": "nodemon index.js",
-        "pretty": "npx prettier . --write",
-        "test": "jest --collect-coverage",
-        "prepare": "husky"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Nerve-Tech-PH/base-expressjs.git"
+        "start": "node index.js"
     },
     "keywords": [
-        "boilerplate",
-        "base",
-        "expressjs"
+        "api-gateway",
+        "magi",
+        "healthcare"
     ],
-    "author": "Nerve Tech PH",
+    "author": "Nerve Technologies",
     "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Nerve-Tech-PH/base-expressjs/issues"
-    },
-    "homepage": "https://github.com/Nerve-Tech-PH/base-expressjs#readme",
     "dependencies": {
-        "ajv": "^8.17.1",
-        "ajv-formats": "^3.0.1",
-        "bcrypt": "^5.1.1",
+        "axios": "^1.7.9",
         "body-parser": "^1.20.3",
         "cookie-parser": "^1.4.7",
         "cors": "^2.8.5",
-        "dotenv": "^16.4.5",
-        "express": "^4.21.1",
-        "glob": "^11.0.0",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
         "helmet": "^8.0.0",
-        "jsonwebtoken": "^9.0.2",
-        "mongoose": "^8.7.2"
+        "jsonwebtoken": "^9.0.2"
     },
     "devDependencies": {
-        "@faker-js/faker": "^9.0.3",
-        "husky": "^9.1.6",
-        "jest": "^29.7.0",
-        "lint-staged": "^15.2.10",
-        "nodemon": "^3.1.7",
-        "prettier": "3.3.3"
-    },
-    "lint-staged": {
-        "**/*": "prettier --write --ignore-unknown"
+        "nodemon": "^3.1.9"
     }
 }
