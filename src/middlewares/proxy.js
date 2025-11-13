@@ -15,7 +15,6 @@ function createProxy(serviceName) {
                 method: req.method,
                 url: targetUrl,
                 data: req.body,
-                params: req.query,
                 headers: {
                     'Content-Type': 'application/json',
                     'X-User-Id': req.user?.id || '',
