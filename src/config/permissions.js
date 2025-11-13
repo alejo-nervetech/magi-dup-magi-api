@@ -34,6 +34,14 @@ const ROUTE_PERMISSIONS = {
     'PUT /v1/informant/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
     'DELETE /v1/informant/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
 
+    'POST /v1/vital': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'GET /v1/vitals': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'GET /v1/vital/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'GET /v1/case/:caseId/vitals': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'GET /v1/patient/:patientId/vitals': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'PUT /v1/vital/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'DELETE /v1/vital/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+
     'POST /v1/facility': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.WRITE },
     'GET /v1/facilities': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
     'GET /v1/facility/:id': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
