@@ -42,6 +42,18 @@ const ROUTE_PERMISSIONS = {
     'PUT /v1/vital/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
     'DELETE /v1/vital/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
 
+    'POST /v1/service-type': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'GET /v1/service-types': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'GET /v1/service-type/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'PUT /v1/service-type/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'DELETE /v1/service-type/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+
+    'POST /v1/service-type/:serviceTypeId/sub-service-type': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'GET /v1/service-type/:serviceTypeId/sub-service-types': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'GET /v1/service-type/:serviceTypeId/sub-service-type/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'PUT /v1/service-type/:serviceTypeId/sub-service-type/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'DELETE /v1/service-type/:serviceTypeId/sub-service-type/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+
     'POST /v1/facility': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.WRITE },
     'GET /v1/facilities': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
     'GET /v1/facility/:id': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
