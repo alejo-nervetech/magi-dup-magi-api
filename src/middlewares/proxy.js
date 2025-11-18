@@ -21,6 +21,7 @@ function createProxy(serviceName) {
                     'X-User-Name': req.user?.name || '',
                     'X-User-Email': req.user?.email || '',
                     'X-Organization-Id': req.user?.organizationId || '',
+                    'X-Facility-Id': req.user?.facilityId || '',
                     'X-User-Role-Id': req.user?.roleId || '',
                     'X-User-Permissions': JSON.stringify(userPermissions),
                     'X-Service-Token': config.serviceSecret,
