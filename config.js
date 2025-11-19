@@ -11,6 +11,7 @@ const {
     USERS_API_URL,
     PATIENT_API_URL,
     FACILITY_API_URL,
+    GUARANTOR_API_URL,
 } = process.env;
 
 module.exports = {
@@ -27,5 +28,6 @@ module.exports = {
         usersApi: USERS_API_URL || 'http://localhost:3001',
         facilityApi: FACILITY_API_URL || 'http://localhost:3002',
         patientApi: PATIENT_API_URL || 'http://localhost:3003',
+        guarantorApi: GUARANTOR_API_URL || 'http://localhost:3004',
     },
 };
