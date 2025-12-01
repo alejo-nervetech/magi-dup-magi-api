@@ -39,6 +39,7 @@ class Server {
         this.app.use('/v1/users*', createProxy('usersApi'));
         this.app.use('/v1/role*', createProxy('usersApi'));
         this.app.use('/v1/permission*', createProxy('usersApi'));
+        this.app.use('/v1/doctor-fee*', createProxy('usersApi'));
 
         this.app.use('/v1/patient*', createProxy('patientApi'));
         this.app.use('/v1/case*', createProxy('patientApi'));
