@@ -54,7 +54,8 @@ class Server {
         this.app.use('/v1/ward*', createProxy('facilityApi'));
         this.app.use('/v1/room*', createProxy('facilityApi'));
         this.app.use('/v1/bed*', createProxy('facilityApi'));
-
+        this.app.use('/v1/transfer-order*', createProxy('facilityApi'));
+        
         this.app.use('/v1/guarantor*', createProxy('guarantorApi'));
         this.app.use('/v1/guarantors*', createProxy('guarantorApi'));
     }
