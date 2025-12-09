@@ -89,6 +89,11 @@ const ROUTE_PERMISSIONS = {
     'GET /v1/transfer-order/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
     'PUT /v1/transfer-order/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
     'DELETE /v1/transfer-order/:id': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+
+    'GET /v1/dashboard/beds/summary': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
+    'GET /v1/dashboard/visits/monthly': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'GET /v1/dashboard/admissions/today': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'GET /v1/dashboard/distribution': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
 };
 
 module.exports = ROUTE_PERMISSIONS;
