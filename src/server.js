@@ -41,6 +41,11 @@ class Server {
         this.app.use('/v1/permission*', createProxy('usersApi'));
         this.app.use('/v1/doctor-fee*', createProxy('usersApi'));
 
+        this.app.use('/v1/dashboard/beds*', createProxy('facilityApi'));
+        this.app.use('/v1/dashboard/visits*', createProxy('patientApi'));
+        this.app.use('/v1/dashboard/admissions*', createProxy('patientApi'));
+        this.app.use('/v1/dashboard/distribution*', createProxy('facilityApi'));
+
         this.app.use('/v1/patient*', createProxy('patientApi'));
         this.app.use('/v1/case*', createProxy('patientApi'));
         this.app.use('/v1/informant*', createProxy('patientApi'));
@@ -55,7 +60,7 @@ class Server {
         this.app.use('/v1/room*', createProxy('facilityApi'));
         this.app.use('/v1/bed*', createProxy('facilityApi'));
         this.app.use('/v1/transfer-order*', createProxy('facilityApi'));
-        
+
         this.app.use('/v1/guarantor*', createProxy('guarantorApi'));
         this.app.use('/v1/guarantors*', createProxy('guarantorApi'));
     }
