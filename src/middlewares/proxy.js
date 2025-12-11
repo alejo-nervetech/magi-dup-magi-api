@@ -2,6 +2,7 @@
 
 const axios = require('axios');
 const config = require('../../config');
+const FormData = require('form-data');
 
 function createProxy(serviceName) {
     return async (req, res) => {
@@ -11,22 +12,38 @@ function createProxy(serviceName) {
 
             const userPermissions = req.user?.role?.permissions || [];
 
+            const isMultipart = req.headers['content-type']?.includes(
+                'multipart/form-data'
+            );
+
+            let requestData;
+            let requestHeaders = {
+                'X-User-Id': req.user?.id || '',
+                'X-User-Name': req.user?.name || '',
+                'X-User-Email': req.user?.email || '',
+                'X-Organization-Id': req.user?.organizationId || '',
+                'X-Facility-Id': req.user?.facilityId || '',
+                'X-User-Role-Id': req.user?.roleId || '',
+                'X-User-Permissions': JSON.stringify(userPermissions),
+                'X-Service-Token': config.serviceSecret,
+            };
+
+            if (isMultipart) {
+                requestData = req;
+                requestHeaders['Content-Type'] = req.headers['content-type'];
+            } else {
+                requestData = req.body;
+                requestHeaders['Content-Type'] = 'application/json';
+            }
+
             const response = await axios({
                 method: req.method,
                 url: targetUrl,
-                data: req.body,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-User-Id': req.user?.id || '',
-                    'X-User-Name': req.user?.name || '',
-                    'X-User-Email': req.user?.email || '',
-                    'X-Organization-Id': req.user?.organizationId || '',
-                    'X-Facility-Id': req.user?.facilityId || '',
-                    'X-User-Role-Id': req.user?.roleId || '',
-                    'X-User-Permissions': JSON.stringify(userPermissions),
-                    'X-Service-Token': config.serviceSecret,
-                },
+                data: requestData,
+                headers: requestHeaders,
                 timeout: 10000,
+                maxBodyLength: Infinity,
+                maxContentLength: Infinity,
             });
 
             res.status(response.status).json(response.data);
