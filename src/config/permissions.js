@@ -95,6 +95,16 @@ const ROUTE_PERMISSIONS = {
     'GET /v1/dashboard/admissions/today': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
     'GET /v1/dashboard/distribution': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
     'GET /v1/dashboard/wards/summary': { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
+
+    'POST /v1/hmo': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'GET /v1/hmos/:orgId': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'PUT /v1/hmo/:hmoId': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'DELETE /v1/hmo/:hmoId': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+
+    'POST /v1/guarantor': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'GET /v1/guarantors/:orgId': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.READ },
+    'PUT /v1/guarantor/:guarantorId': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
+    'DELETE /v1/guarantor/:guarantorId': { resource: RESOURCES.PATIENT_INFORMATION, access: ACCESS_TYPES.WRITE },
 };
 
 module.exports = ROUTE_PERMISSIONS;

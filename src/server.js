@@ -64,6 +64,7 @@ class Server {
 
         this.app.use('/v1/guarantor*', createProxy('guarantorApi'));
         this.app.use('/v1/guarantors*', createProxy('guarantorApi'));
+        this.app.use('/v1/hmo*', createProxy('guarantorApi'));
     }
 
     async start() {
