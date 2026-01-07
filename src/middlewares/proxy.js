@@ -9,7 +9,6 @@ function createProxy(serviceName) {
         try {
             const serviceUrl = config.services[serviceName];
             const targetUrl = `${serviceUrl}${req.originalUrl}`;
-
             const userPermissions = req.user?.role?.permissions || [];
 
             const isMultipart = req.headers['content-type']?.includes(
