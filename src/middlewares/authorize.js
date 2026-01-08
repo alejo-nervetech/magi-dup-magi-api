@@ -5,8 +5,10 @@ const Errors = require('../errors');
 
 function normalizeRoute(path) {
     return path.replace(/\/[^\/]+$/, (match) => {
-        if (match.match(/^\/[a-f0-9-]{36}$/i) || match.match(/^\/[a-z]+_[a-f0-9]+$/i)) {
-            return '/:id';
+        const segment = match.slice(1);
+        if (segment.match(/^[a-f0-9-]{36}$/i) || segment.match(/^[a-z]+_[a-f0-9]+$/i)) {
+            const paramName = segment.includes('_') ? segment.split('_')[0] + 'Id' : 'id';
+            return `/:${paramName}`;
         }
         return match;
     }).replace(/\/[^\/]+\//, (match) => {

@@ -346,6 +346,23 @@ const ROUTE_PERMISSIONS = {
         access: ACCESS_TYPES.WRITE,
     },
 
+    'POST /v1/patient-guarantor': {
+        resource: RESOURCES.PATIENT_INFORMATION,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'GET /v1/patient-guarantors': {
+        resource: RESOURCES.PATIENT_INFORMATION,
+        access: ACCESS_TYPES.READ,
+    },
+    'PUT /v1/patient-guarantor/:patientGuarantorId': {
+        resource: RESOURCES.PATIENT_INFORMATION,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'DELETE /v1/patient-guarantor/:patientGuarantorId': {
+        resource: RESOURCES.PATIENT_INFORMATION,
+        access: ACCESS_TYPES.WRITE,
+    },
+
     'GET /v1/items': {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.READ,
