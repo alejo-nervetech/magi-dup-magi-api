@@ -379,6 +379,14 @@ const ROUTE_PERMISSIONS = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.WRITE,
     },
+    'POST /v1/item-category': {
+        resource: RESOURCES.INFRASTRUCTURE,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'GET /v1/item-categories': {
+        resource: RESOURCES.INFRASTRUCTURE,
+        access: ACCESS_TYPES.WRITE,
+    },
     'GET /v1/orders': {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.READ,
