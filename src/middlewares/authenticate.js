@@ -28,6 +28,7 @@ async function authenticate(req, res, next) {
             email: decoded.email,
             organizationId: decoded.organizationId,
             facilityId: decoded.facilityId,
+            departmentId: decoded.departmentId,
             roleId: decoded.roleId,
             role: {
                 id: decoded.roleId,
