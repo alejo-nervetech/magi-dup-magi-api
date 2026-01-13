@@ -13,6 +13,18 @@ const ROUTE_PERMISSIONS = {
         resource: RESOURCES.SYSTEM_USER,
         access: ACCESS_TYPES.READ,
     },
+    'GET /v1/user/:id': {
+        resource: RESOURCES.SYSTEM_USER,
+        access: ACCESS_TYPES.READ,
+    },
+    'PUT /v1/user/:id': {
+        resource: RESOURCES.SYSTEM_USER,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'DELETE /v1/user/:id': {
+        resource: RESOURCES.SYSTEM_USER,
+        access: ACCESS_TYPES.WRITE,
+    },
 
     'POST /v1/role': { resource: RESOURCES.ROLE, access: ACCESS_TYPES.WRITE },
     'GET /v1/roles': { resource: RESOURCES.ROLE, access: ACCESS_TYPES.READ },
