@@ -227,6 +227,10 @@ const ROUTE_PERMISSIONS = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.READ,
     },
+    'GET /v1/facilities/:facilityId/wards': {
+        resource: RESOURCES.INFRASTRUCTURE,
+        access: ACCESS_TYPES.READ,
+    },
     'GET /v1/ward/:id': {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.READ,
