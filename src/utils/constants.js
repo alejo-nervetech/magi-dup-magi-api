@@ -8,6 +8,8 @@ const RESOURCES = {
     DIAGNOSIS_PROGNOSIS: 'diagnosis_prognosis',
     SYSTEM_USER: 'system_user',
     INFRASTRUCTURE: 'infrastructure',
+    REQUISITION: 'requisition',
+    REQUISITION_APPROVAL: 'requisition_approval',
 };
 
 const ACCESS_TYPES = {
