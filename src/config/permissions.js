@@ -411,6 +411,18 @@ const ROUTE_PERMISSIONS = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.WRITE,
     },
+    'POST /v1/requisition': {
+        resource: RESOURCES.REQUISITION,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'GET /v1/requisition': {
+        resource: RESOURCES.REQUISITION,
+        access: ACCESS_TYPES.READ,
+    },
+    'PATCH /v1/requisition/approval/:id': {
+        resource: RESOURCES.REQUISITION_APPROVAL,
+        access: ACCESS_TYPES.WRITE,
+    },
 };
 
 module.exports = ROUTE_PERMISSIONS;
