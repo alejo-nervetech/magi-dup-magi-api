@@ -1,6 +1,6 @@
 'use strict';
 
-const ROUTE_PERMISSIONS = require('../config/permissions');
+const ROUTE_PERMISSIONS = require('../config/permissions/index');
 const Errors = require('../errors');
 
 function normalizeRoute(path) {
