@@ -24,7 +24,9 @@ function createProxy(serviceName) {
                 'X-Facility-Id': req.user?.facilityId || '',
                 'X-Department-Id': req.user?.departmentId || '',
                 'X-User-Role-Id': req.user?.roleId || '',
+                'X-User-Role-Name': req.user?.role?.name || '',
                 'X-User-Permissions': JSON.stringify(userPermissions),
+                'X-User-Department-Assignments': JSON.stringify(req.user?.departmentAssignments || []),
                 'X-Service-Token': config.serviceSecret,
             };
 
