@@ -22,18 +22,48 @@ async function authenticate(req, res, next) {
 
         const decoded = jwt.verify(token, config.encryption.jwt.jwtToken);
 
+        const activeDepartmentId = req.headers['x-active-department-id'];
+        const departmentAssignments = decoded.departmentAssignments || [];
+
+        let activeDepartmentData = null;
+        let permissions = decoded.permissions || [];
+        let roleId = decoded.roleId;
+        let departmentId = decoded.departmentId;
+        let roleName = decoded.role;
+
+        if (departmentAssignments.length > 0) {
+            if (activeDepartmentId) {
+                activeDepartmentData = departmentAssignments.find(
+                    (a) => a.departmentId === activeDepartmentId
+                );
+            }
+
+            if (!activeDepartmentData) {
+                activeDepartmentData = departmentAssignments[0];
+            }
+
+            if (activeDepartmentData) {
+                permissions = activeDepartmentData.permissions || [];
+                roleId = activeDepartmentData.roleId;
+                departmentId = activeDepartmentData.departmentId;
+                roleName = activeDepartmentData.roleName;
+            }
+        }
+
         const user = {
             id: decoded.id,
             name: decoded.name,
             email: decoded.email,
             organizationId: decoded.organizationId,
             facilityId: decoded.facilityId,
-            departmentId: decoded.departmentId,
-            roleId: decoded.roleId,
+            departmentId: departmentId,
+            roleId: roleId,
             role: {
-                id: decoded.roleId,
-                permissions: decoded.permissions || [],
+                id: roleId,
+                name: roleName,
+                permissions: permissions,
             },
+            departmentAssignments: departmentAssignments,
         };
 
         req.user = user;
