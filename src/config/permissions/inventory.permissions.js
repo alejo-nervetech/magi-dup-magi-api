@@ -27,6 +27,18 @@ const inventoryPermissions = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.WRITE,
     },
+    'GET /v1/item-category/:id': {
+        resource: RESOURCES.INFRASTRUCTURE,
+        access: ACCESS_TYPES.READ,
+    },
+    'PATCH /v1/item-category/:id': {
+        resource: RESOURCES.INFRASTRUCTURE,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'DELETE /v1/item-category/:id': {
+        resource: RESOURCES.INFRASTRUCTURE,
+        access: ACCESS_TYPES.WRITE,
+    },
     'GET /v1/orders': {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.READ,
