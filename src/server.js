@@ -75,6 +75,8 @@ class Server {
 
         this.app.use('/v1/requisition*', createProxy('inventoryApi'));
         this.app.use('/v1/requisitions*', createProxy('inventoryApi'));
+
+        this.app.use('/v1/inventory*', createProxy('inventoryApi'));
     }
 
     async start() {
