@@ -25,23 +25,23 @@ const facilityPermissions = {
     },
 
     'POST /v1/department': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.DEPARTMENTS,
         access: ACCESS_TYPES.WRITE,
     },
     'GET /v1/facilities/:facilityId/departments': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.DEPARTMENTS,
         access: ACCESS_TYPES.READ,
     },
     'GET /v1/department/:id': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.DEPARTMENTS,
         access: ACCESS_TYPES.READ,
     },
     'PUT /v1/department/:id': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.DEPARTMENTS,
         access: ACCESS_TYPES.WRITE,
     },
     'DELETE /v1/department/:id': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.DEPARTMENTS,
         access: ACCESS_TYPES.WRITE,
     },
 
@@ -113,23 +113,23 @@ const facilityPermissions = {
     },
 
     'GET /v1/dashboard/beds/summary': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.DASHBOARD,
         access: ACCESS_TYPES.READ,
     },
     'GET /v1/dashboard/visits/monthly': {
-        resource: RESOURCES.PATIENT_INFORMATION,
+        resource: RESOURCES.DASHBOARD,
         access: ACCESS_TYPES.READ,
     },
     'GET /v1/dashboard/admissions/today': {
-        resource: RESOURCES.PATIENT_INFORMATION,
+        resource: RESOURCES.DASHBOARD,
         access: ACCESS_TYPES.READ,
     },
     'GET /v1/dashboard/distribution': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.DASHBOARD,
         access: ACCESS_TYPES.READ,
     },
     'GET /v1/dashboard/wards/summary': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.DASHBOARD,
         access: ACCESS_TYPES.READ,
     },
 };
