@@ -44,15 +44,21 @@ function authorize(req, res, next) {
 
     const userPermissions = req.user.role.permissions;
 
-    const hasPermission = userPermissions.some((permission) => {
-        if (permission.resource === requiredPermission.resource) {
-            if (requiredPermission.access === 'W') {
-                return permission.accessType === 'W';
+    const permissionsToCheck = Array.isArray(requiredPermission)
+        ? requiredPermission
+        : [requiredPermission];
+
+    const hasPermission = permissionsToCheck.some((required) =>
+        userPermissions.some((permission) => {
+            if (permission.resource === required.resource) {
+                if (required.access === 'W') {
+                    return permission.accessType === 'W';
+                }
+                return permission.accessType === 'R' || permission.accessType === 'W';
             }
-            return permission.accessType === 'R' || permission.accessType === 'W';
-        }
-        return false;
-    });
+            return false;
+        })
+    );
 
     if (!hasPermission) {
         const error = new Errors.ForbiddenError(
