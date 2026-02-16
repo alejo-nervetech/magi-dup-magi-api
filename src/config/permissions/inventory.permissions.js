@@ -4,51 +4,51 @@ const { RESOURCES, ACCESS_TYPES } = require('../../utils/constants');
 
 const inventoryPermissions = {
     'GET /v1/items': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.READ,
     },
     'GET /v1/item/:id': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.READ,
     },
     'POST /v1/item': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.WRITE,
     },
     'PATCH /v1/item/:id': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.WRITE,
     },
     'POST /v1/item-category': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.WRITE,
     },
     'GET /v1/item-categories': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.WRITE,
     },
     'GET /v1/item-category/:id': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.READ,
     },
     'PATCH /v1/item-category/:id': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.WRITE,
     },
     'DELETE /v1/item-category/:id': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.WRITE,
     },
     'GET /v1/orders': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.READ,
     },
     'GET /v1/order/:id': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.READ,
     },
     'POST /v1/order': {
-        resource: RESOURCES.INFRASTRUCTURE,
+        resource: RESOURCES.INVENTORY,
         access: ACCESS_TYPES.WRITE,
     },
     'POST /v1/requisition': {
