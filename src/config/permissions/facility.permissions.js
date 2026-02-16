@@ -28,10 +28,10 @@ const facilityPermissions = {
         resource: RESOURCES.DEPARTMENTS,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/facilities/:facilityId/departments': {
-        resource: RESOURCES.DEPARTMENTS,
-        access: ACCESS_TYPES.READ,
-    },
+    'GET /v1/facilities/:facilityId/departments': [
+        { resource: RESOURCES.DEPARTMENTS, access: ACCESS_TYPES.READ },
+        { resource: RESOURCES.PATIENT_REGISTRATION, access: ACCESS_TYPES.READ },
+    ],
     'GET /v1/department/:id': {
         resource: RESOURCES.DEPARTMENTS,
         access: ACCESS_TYPES.READ,
@@ -49,10 +49,10 @@ const facilityPermissions = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/departments/:departmentId/wards': {
-        resource: RESOURCES.INFRASTRUCTURE,
-        access: ACCESS_TYPES.READ,
-    },
+    'GET /v1/departments/:departmentId/wards': [
+        { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
+        { resource: RESOURCES.PATIENT_REGISTRATION, access: ACCESS_TYPES.READ },
+    ],
     'GET /v1/facilities/:facilityId/wards': {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.READ,
@@ -74,10 +74,10 @@ const facilityPermissions = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/wards/:wardId/rooms': {
-        resource: RESOURCES.INFRASTRUCTURE,
-        access: ACCESS_TYPES.READ,
-    },
+    'GET /v1/wards/:wardId/rooms': [
+        { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
+        { resource: RESOURCES.PATIENT_REGISTRATION, access: ACCESS_TYPES.READ },
+    ],
     'GET /v1/room/:id': {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.READ,
@@ -95,10 +95,10 @@ const facilityPermissions = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/rooms/:roomId/beds': {
-        resource: RESOURCES.INFRASTRUCTURE,
-        access: ACCESS_TYPES.READ,
-    },
+    'GET /v1/rooms/:roomId/beds': [
+        { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
+        { resource: RESOURCES.PATIENT_REGISTRATION, access: ACCESS_TYPES.READ },
+    ],
     'GET /v1/bed/:id': {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.READ,
