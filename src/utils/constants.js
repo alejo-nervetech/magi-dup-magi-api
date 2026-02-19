@@ -15,6 +15,7 @@ const RESOURCES = {
     ROLE_MANAGEMENT: 'role_management',
     DOCTORS_FEE: 'doctors_fee',
     PATIENT_VITALS: 'patient_vitals',
+    PATIENT_DIET: 'patient_diet',
     DOCTOR_ORDERS: 'doctor_orders',
     DIAGNOSIS_PROGNOSIS: 'diagnosis_prognosis',
     INVENTORY: 'inventory',

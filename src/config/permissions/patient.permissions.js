@@ -91,6 +91,31 @@ const patientPermissions = {
         access: ACCESS_TYPES.WRITE,
     },
 
+    'POST /v1/patient-diet': {
+        resource: RESOURCES.PATIENT_DIET,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'GET /v1/patient-diets': {
+        resource: RESOURCES.PATIENT_DIET,
+        access: ACCESS_TYPES.READ,
+    },
+    'GET /v1/patient-diet/:id': {
+        resource: RESOURCES.PATIENT_DIET,
+        access: ACCESS_TYPES.READ,
+    },
+    'GET /v1/case/:caseId/patient-diet': {
+        resource: RESOURCES.PATIENT_DIET,
+        access: ACCESS_TYPES.READ,
+    },
+    'PUT /v1/patient-diet/:id': {
+        resource: RESOURCES.PATIENT_DIET,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'DELETE /v1/patient-diet/:id': {
+        resource: RESOURCES.PATIENT_DIET,
+        access: ACCESS_TYPES.WRITE,
+    },
+
     'POST /v1/service-type': {
         resource: RESOURCES.SYSTEM_SETTINGS,
         access: ACCESS_TYPES.WRITE,

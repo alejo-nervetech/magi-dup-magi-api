@@ -48,6 +48,8 @@ class Server {
         this.app.use('/v1/dashboard/distribution*', createProxy('facilityApi'));
 
         this.app.use('/v1/patient-guarantor*', createProxy('guarantorApi'));
+        this.app.use('/v1/patient-diet*', createProxy('patientApi'));
+        this.app.use('/v1/patient-diets*', createProxy('patientApi'));
         this.app.use('/v1/patient*', createProxy('patientApi'));
         this.app.use('/v1/case*', createProxy('patientApi'));
         this.app.use('/v1/informant*', createProxy('patientApi'));
