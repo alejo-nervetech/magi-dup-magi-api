@@ -4,36 +4,36 @@ const { RESOURCES, ACCESS_TYPES } = require('../../utils/constants');
 
 const guarantorPermissions = {
     'POST /v1/hmo': {
-        resource: RESOURCES.HMO,
+        resource: RESOURCES.HMO_PROVIDERS,
         access: ACCESS_TYPES.WRITE,
     },
     'GET /v1/hmos/:orgId': {
-        resource: RESOURCES.HMO,
+        resource: RESOURCES.HMO_PROVIDERS,
         access: ACCESS_TYPES.READ,
     },
     'PUT /v1/hmo/:hmoId': {
-        resource: RESOURCES.HMO,
+        resource: RESOURCES.HMO_PROVIDERS,
         access: ACCESS_TYPES.WRITE,
     },
     'DELETE /v1/hmo/:hmoId': {
-        resource: RESOURCES.HMO,
+        resource: RESOURCES.HMO_PROVIDERS,
         access: ACCESS_TYPES.WRITE,
     },
 
     'POST /v1/guarantor': {
-        resource: RESOURCES.HMO,
+        resource: RESOURCES.HMO_GUARANTORS,
         access: ACCESS_TYPES.WRITE,
     },
     'GET /v1/guarantors/:orgId': {
-        resource: RESOURCES.HMO,
+        resource: RESOURCES.HMO_GUARANTORS,
         access: ACCESS_TYPES.READ,
     },
     'PUT /v1/guarantor/:guarantorId': {
-        resource: RESOURCES.HMO,
+        resource: RESOURCES.HMO_GUARANTORS,
         access: ACCESS_TYPES.WRITE,
     },
     'DELETE /v1/guarantor/:guarantorId': {
-        resource: RESOURCES.HMO,
+        resource: RESOURCES.HMO_GUARANTORS,
         access: ACCESS_TYPES.WRITE,
     },
 

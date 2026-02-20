@@ -4,7 +4,7 @@ const { RESOURCES, ACCESS_TYPES } = require('../../utils/constants');
 
 const patientPermissions = {
     'POST /v1/patient': {
-        resource: RESOURCES.PATIENT_REGISTRATION,
+        resource: RESOURCES.PATIENT_RECORDS,
         access: ACCESS_TYPES.WRITE,
     },
     'GET /v1/patients': {
@@ -16,11 +16,11 @@ const patientPermissions = {
         access: ACCESS_TYPES.READ,
     },
     'PUT /v1/patient/:id': {
-        resource: RESOURCES.PATIENT_INFO_EDIT,
+        resource: RESOURCES.PATIENT_RECORDS,
         access: ACCESS_TYPES.WRITE,
     },
     'DELETE /v1/patient/:id': {
-        resource: RESOURCES.PATIENT_INFO_EDIT,
+        resource: RESOURCES.PATIENT_RECORDS,
         access: ACCESS_TYPES.WRITE,
     },
 
@@ -50,15 +50,15 @@ const patientPermissions = {
     },
 
     'POST /v1/informant': {
-        resource: RESOURCES.PATIENT_INFO_EDIT,
+        resource: RESOURCES.PATIENT_RECORDS,
         access: ACCESS_TYPES.WRITE,
     },
     'PUT /v1/informant/:id': {
-        resource: RESOURCES.PATIENT_INFO_EDIT,
+        resource: RESOURCES.PATIENT_RECORDS,
         access: ACCESS_TYPES.WRITE,
     },
     'DELETE /v1/informant/:id': {
-        resource: RESOURCES.PATIENT_INFO_EDIT,
+        resource: RESOURCES.PATIENT_RECORDS,
         access: ACCESS_TYPES.WRITE,
     },
 
