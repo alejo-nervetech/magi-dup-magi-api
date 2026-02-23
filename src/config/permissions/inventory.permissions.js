@@ -25,7 +25,7 @@ const inventoryPermissions = {
     },
     'GET /v1/item-categories': {
         resource: RESOURCES.INVENTORY,
-        access: ACCESS_TYPES.WRITE,
+        access: ACCESS_TYPES.READ,
     },
     'GET /v1/item-category/:id': {
         resource: RESOURCES.INVENTORY,
