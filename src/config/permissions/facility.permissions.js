@@ -28,7 +28,7 @@ const facilityPermissions = {
         resource: RESOURCES.DEPARTMENTS,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/facilities/:facilityId/departments': [
+    'GET /v1/facilities/:id/departments': [
         { resource: RESOURCES.DEPARTMENTS, access: ACCESS_TYPES.READ },
         { resource: RESOURCES.PATIENT_RECORDS, access: ACCESS_TYPES.READ },
     ],
@@ -49,11 +49,11 @@ const facilityPermissions = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/departments/:departmentId/wards': [
+    'GET /v1/departments/:id/wards': [
         { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
         { resource: RESOURCES.PATIENT_RECORDS, access: ACCESS_TYPES.READ },
     ],
-    'GET /v1/facilities/:facilityId/wards': {
+    'GET /v1/facilities/:id/wards': {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.READ,
     },
@@ -74,7 +74,7 @@ const facilityPermissions = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/wards/:wardId/rooms': [
+    'GET /v1/wards/:id/rooms': [
         { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
         { resource: RESOURCES.PATIENT_RECORDS, access: ACCESS_TYPES.READ },
     ],
@@ -95,7 +95,7 @@ const facilityPermissions = {
         resource: RESOURCES.INFRASTRUCTURE,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/rooms/:roomId/beds': [
+    'GET /v1/rooms/:id/beds': [
         { resource: RESOURCES.INFRASTRUCTURE, access: ACCESS_TYPES.READ },
         { resource: RESOURCES.PATIENT_RECORDS, access: ACCESS_TYPES.READ },
     ],

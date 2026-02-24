@@ -51,11 +51,11 @@ const userPermissions = {
         resource: RESOURCES.DOCTORS_FEE,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/doctor-fee/settings/:doctorId': {
+    'GET /v1/doctor-fee/settings/:id': {
         resource: RESOURCES.DOCTORS_FEE,
         access: ACCESS_TYPES.READ,
     },
-    'PUT /v1/doctor-fee/settings/:doctorId': {
+    'PUT /v1/doctor-fee/settings/:id': {
         resource: RESOURCES.DOCTORS_FEE,
         access: ACCESS_TYPES.WRITE,
     },

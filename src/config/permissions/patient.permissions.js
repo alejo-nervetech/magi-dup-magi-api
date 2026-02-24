@@ -36,7 +36,7 @@ const patientPermissions = {
         resource: RESOURCES.CASE_REGISTRY,
         access: ACCESS_TYPES.READ,
     },
-    'GET /v1/patient/:patientId/cases': {
+    'GET /v1/patient/:id/cases': {
         resource: RESOURCES.CASE_REGISTRY,
         access: ACCESS_TYPES.READ,
     },
@@ -74,11 +74,11 @@ const patientPermissions = {
         resource: RESOURCES.PATIENT_VITALS,
         access: ACCESS_TYPES.READ,
     },
-    'GET /v1/case/:caseId/vitals': {
+    'GET /v1/case/:id/vitals': {
         resource: RESOURCES.PATIENT_VITALS,
         access: ACCESS_TYPES.READ,
     },
-    'GET /v1/patient/:patientId/vitals': {
+    'GET /v1/patient/:id/vitals': {
         resource: RESOURCES.PATIENT_VITALS,
         access: ACCESS_TYPES.READ,
     },
@@ -103,7 +103,7 @@ const patientPermissions = {
         resource: RESOURCES.PATIENT_DIET,
         access: ACCESS_TYPES.READ,
     },
-    'GET /v1/case/:caseId/patient-diet': {
+    'GET /v1/case/:id/patient-diet': {
         resource: RESOURCES.PATIENT_DIET,
         access: ACCESS_TYPES.READ,
     },
@@ -137,23 +137,23 @@ const patientPermissions = {
         access: ACCESS_TYPES.WRITE,
     },
 
-    'POST /v1/service-type/:serviceTypeId/sub-service-type': {
+    'POST /v1/service-type/:id/sub-service-type': {
         resource: RESOURCES.SYSTEM_SETTINGS,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/service-type/:serviceTypeId/sub-service-types': {
+    'GET /v1/service-type/:id/sub-service-types': {
         resource: RESOURCES.SYSTEM_SETTINGS,
         access: ACCESS_TYPES.READ,
     },
-    'GET /v1/service-type/:serviceTypeId/sub-service-type/:id': {
+    'GET /v1/service-type/:id/sub-service-type/:id': {
         resource: RESOURCES.SYSTEM_SETTINGS,
         access: ACCESS_TYPES.READ,
     },
-    'PUT /v1/service-type/:serviceTypeId/sub-service-type/:id': {
+    'PUT /v1/service-type/:id/sub-service-type/:id': {
         resource: RESOURCES.SYSTEM_SETTINGS,
         access: ACCESS_TYPES.WRITE,
     },
-    'DELETE /v1/service-type/:serviceTypeId/sub-service-type/:id': {
+    'DELETE /v1/service-type/:id/sub-service-type/:id': {
         resource: RESOURCES.SYSTEM_SETTINGS,
         access: ACCESS_TYPES.WRITE,
     },

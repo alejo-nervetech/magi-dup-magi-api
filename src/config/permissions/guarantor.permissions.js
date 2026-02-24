@@ -7,15 +7,15 @@ const guarantorPermissions = {
         resource: RESOURCES.HMO_PROVIDERS,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/hmos/:orgId': {
+    'GET /v1/hmos/:id': {
         resource: RESOURCES.HMO_PROVIDERS,
         access: ACCESS_TYPES.READ,
     },
-    'PUT /v1/hmo/:hmoId': {
+    'PUT /v1/hmo/:id': {
         resource: RESOURCES.HMO_PROVIDERS,
         access: ACCESS_TYPES.WRITE,
     },
-    'DELETE /v1/hmo/:hmoId': {
+    'DELETE /v1/hmo/:id': {
         resource: RESOURCES.HMO_PROVIDERS,
         access: ACCESS_TYPES.WRITE,
     },
@@ -24,16 +24,37 @@ const guarantorPermissions = {
         resource: RESOURCES.HMO_GUARANTORS,
         access: ACCESS_TYPES.WRITE,
     },
-    'GET /v1/guarantors/:orgId': {
+    'GET /v1/guarantors/:id': {
         resource: RESOURCES.HMO_GUARANTORS,
         access: ACCESS_TYPES.READ,
     },
-    'PUT /v1/guarantor/:guarantorId': {
+    'PUT /v1/guarantor/:id': {
         resource: RESOURCES.HMO_GUARANTORS,
         access: ACCESS_TYPES.WRITE,
     },
-    'DELETE /v1/guarantor/:guarantorId': {
+    'DELETE /v1/guarantor/:id': {
         resource: RESOURCES.HMO_GUARANTORS,
+        access: ACCESS_TYPES.WRITE,
+    },
+
+    'POST /v1/patient-hmo-card': {
+        resource: RESOURCES.PATIENT_RECORDS,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'POST /v1/patient-hmo-cards/bulk': {
+        resource: RESOURCES.PATIENT_RECORDS,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'GET /v1/patient-hmo-cards': {
+        resource: RESOURCES.PATIENT_RECORDS,
+        access: ACCESS_TYPES.READ,
+    },
+    'PUT /v1/patient-hmo-card/:id': {
+        resource: RESOURCES.PATIENT_RECORDS,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'DELETE /v1/patient-hmo-card/:id': {
+        resource: RESOURCES.PATIENT_RECORDS,
         access: ACCESS_TYPES.WRITE,
     },
 
@@ -45,11 +66,11 @@ const guarantorPermissions = {
         resource: RESOURCES.PATIENT_GUARANTORS,
         access: ACCESS_TYPES.READ,
     },
-    'PUT /v1/patient-guarantor/:patientGuarantorId': {
+    'PUT /v1/patient-guarantor/:id': {
         resource: RESOURCES.PATIENT_GUARANTORS,
         access: ACCESS_TYPES.WRITE,
     },
-    'DELETE /v1/patient-guarantor/:patientGuarantorId': {
+    'DELETE /v1/patient-guarantor/:id': {
         resource: RESOURCES.PATIENT_GUARANTORS,
         access: ACCESS_TYPES.WRITE,
     },
