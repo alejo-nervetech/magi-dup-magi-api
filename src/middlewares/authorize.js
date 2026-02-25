@@ -4,21 +4,13 @@ const ROUTE_PERMISSIONS = require('../config/permissions/index');
 const Errors = require('../errors');
 
 function normalizeRoute(path) {
-    return path.replace(/\/[^\/]+$/, (match) => {
-        const segment = match.slice(1);
-        if (segment.match(/^[a-f0-9-]{36}$/i) || segment.match(/^[a-z]+_[a-f0-9]+$/i)) {
-            const paramName = segment.includes('_') ? segment.split('_')[0] + 'Id' : 'id';
-            return `/:${paramName}`;
-        }
-        return match;
-    }).replace(/\/[^\/]+\//, (match) => {
-        const segment = match.slice(1, -1);
-        if (segment.match(/^[a-f0-9-]{36}$/i) || segment.match(/^[a-z]+_[a-f0-9]+$/i)) {
-            const paramName = segment.includes('_') ? segment.split('_')[0] + 'Id' : 'id';
-            return `/:${paramName}/`;
-        }
-        return match;
-    });
+    const isIdSegment = (segment) =>
+        segment.match(/^[a-f0-9-]{36}$/i) || segment.match(/^[a-z]+_[a-z0-9]+$/i);
+
+    return path
+        .split('/')
+        .map((segment) => (isIdSegment(segment) ? ':id' : segment))
+        .join('/');
 }
 
 function authorize(req, res, next) {
