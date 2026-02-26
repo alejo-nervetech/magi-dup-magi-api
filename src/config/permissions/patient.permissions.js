@@ -49,6 +49,19 @@ const patientPermissions = {
         access: ACCESS_TYPES.WRITE,
     },
 
+    'GET /v1/case/:id/doctors': {
+        resource: RESOURCES.CASE_REGISTRY,
+        access: ACCESS_TYPES.READ,
+    },
+    'POST /v1/case/:id/doctors': {
+        resource: RESOURCES.CASE_REGISTRY,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'DELETE /v1/case/:id/doctor/:id': {
+        resource: RESOURCES.CASE_REGISTRY,
+        access: ACCESS_TYPES.WRITE,
+    },
+
     'POST /v1/informant': {
         resource: RESOURCES.PATIENT_RECORDS,
         access: ACCESS_TYPES.WRITE,
