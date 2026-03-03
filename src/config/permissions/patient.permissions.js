@@ -191,6 +191,39 @@ const patientPermissions = {
         resource: RESOURCES.TRANSFERS,
         access: ACCESS_TYPES.WRITE,
     },
+
+    'POST /v1/charge': {
+        resource: RESOURCES.PATIENT_CHARGES,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'GET /v1/charges': {
+        resource: RESOURCES.PATIENT_CHARGES,
+        access: ACCESS_TYPES.READ,
+    },
+    'GET /v1/charge/:id': {
+        resource: RESOURCES.PATIENT_CHARGES,
+        access: ACCESS_TYPES.READ,
+    },
+    'GET /v1/case/:id/charges': {
+        resource: RESOURCES.PATIENT_CHARGES,
+        access: ACCESS_TYPES.READ,
+    },
+    'GET /v1/case/:id/charges/summary': {
+        resource: RESOURCES.PATIENT_CHARGES,
+        access: ACCESS_TYPES.READ,
+    },
+    'PUT /v1/charge/:id': {
+        resource: RESOURCES.PATIENT_CHARGES,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'PUT /v1/charge/:id/void': {
+        resource: RESOURCES.PATIENT_CHARGES,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'DELETE /v1/charge/:id': {
+        resource: RESOURCES.PATIENT_CHARGES,
+        access: ACCESS_TYPES.WRITE,
+    },
 };
 
 module.exports = patientPermissions;
