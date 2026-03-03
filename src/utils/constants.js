@@ -21,6 +21,7 @@ const RESOURCES = {
     REQUISITION: 'requisition',
     REQUISITION_APPROVAL: 'requisition_approval',
     SYSTEM_SETTINGS: 'system_settings',
+    PATIENT_CHARGES: 'patient_charges',
 };
 
 const ACCESS_TYPES = {
