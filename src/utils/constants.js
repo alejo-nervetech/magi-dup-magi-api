@@ -22,6 +22,7 @@ const RESOURCES = {
     REQUISITION_APPROVAL: 'requisition_approval',
     SYSTEM_SETTINGS: 'system_settings',
     PATIENT_CHARGES: 'patient_charges',
+    PATIENT_INVOICE: 'patient_invoice',
 };
 
 const ACCESS_TYPES = {
