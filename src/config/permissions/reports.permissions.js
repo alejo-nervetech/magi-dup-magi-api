@@ -15,6 +15,14 @@ const reportsPermissions = {
         resource: RESOURCES.PATIENT_INVOICE,
         access: ACCESS_TYPES.READ,
     },
+    'POST /v1/payment': {
+        resource: RESOURCES.PATIENT_INVOICE,
+        access: ACCESS_TYPES.WRITE,
+    },
+    'GET /v1/payments/case/:caseId': {
+        resource: RESOURCES.PATIENT_INVOICE,
+        access: ACCESS_TYPES.READ,
+    },
 };
 
 module.exports = reportsPermissions;
