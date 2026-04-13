@@ -7,7 +7,7 @@ COPY package*.json ./
 RUN npm ci --omit=dev
 
 # Rebuild native modules
-RUN npm rebuild bcrypt
+RUN npm build
 
 COPY . .
 
