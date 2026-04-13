@@ -1,24 +1,9 @@
-FROM node:22
-
+FROM node:22-alpine
 WORKDIR /usr/src/app
-
 COPY package*.json ./
-
-# Was "npm ci --omit=dev" — removed --omit=dev so devDeps are available for build
 RUN npm ci
-
-# Copy source FIRST
 COPY . .
-
-# Now build has access to source files
 RUN npm run build
-
-# Remove devDeps after build to keep image lean
-RUN npm prune --omit=dev
-
+RUN npm prune --omit=dev  
 EXPOSE 3000
-
-HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000/healthcheck', r => process.exit(r.statusCode === 200 ? 0 : 1))"
-
 CMD ["node", "index.js"]
