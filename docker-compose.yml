@@ -11,6 +11,14 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+      - USERS_API_URL=http://magi-users-api:3000
+      - FACILITY_API_URL=http://magi-facility-api:3000
+      - PATIENT_API_URL=http://magi-patient-api:3000
+      - GUARANTOR_API_URL=http://magi-guarantor-api:3000
+      # Auth
+      - JWT_TOKEN=${JWT_TOKEN}
+      - SERVICE_SECRET=${SERVICE_SECRET}
+       - CORS_ORIGIN=${CORS_ORIGIN}
     networks:
       - magi-net
 
