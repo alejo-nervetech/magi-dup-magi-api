@@ -22,6 +22,7 @@ class Server {
     setupAuth() {
         const skipAuth = (req, res, next) => {
             if (
+                req.path === '/health' ||
                 req.path === '/healthcheck' ||
                 (req.method === 'POST' && req.path === '/v1/user/login')
             ) {
@@ -94,8 +95,15 @@ class Server {
 
         this.setupMiddleware();
 
+        // /health   — used by: ALB target group health check, ECS container
+        //             healthCheck, and Docker HEALTHCHECK directive.
+        // /healthcheck — kept for backwards compatibility.
+        this.app.get('/health', (_req, res) => {
+            res.status(200).json({ status: 'ok' });
+        });
+
         this.app.get('/healthcheck', (_req, res) => {
-            res.send('ok');
+            res.status(200).json({ status: 'ok' });
         });
 
         this.setupAuth();
