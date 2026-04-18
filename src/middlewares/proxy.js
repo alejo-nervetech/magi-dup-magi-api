@@ -2,49 +2,66 @@
 
 const axios = require('axios');
 const config = require('../../config');
+const FormData = require('form-data');
 
 function createProxy(serviceName) {
     return async (req, res) => {
         try {
             const serviceUrl = config.services[serviceName];
-
-            // ❌ OLD (kept for reference)
-            // const targetUrl = `${serviceUrl}${req.originalUrl}`;
-
-            // 🔴 ISSUE:
-            // Sometimes causes double /v1/ duplication depending on backend routing
-
-            // ✅ SAFE VERSION (CURRENT)
             const targetUrl = `${serviceUrl}${req.originalUrl}`;
+            const userPermissions = req.user?.role?.permissions || [];
 
-            console.log(`[PROXY] ${req.method} ${req.originalUrl} → ${targetUrl}`);
+            const isMultipart = req.headers['content-type']?.includes(
+                'multipart/form-data'
+            );
 
-            const response = await axios({
-                method: req.method, // ✔ IMPORTANT (fixes 405 root cause)
-                url: targetUrl,
-                data: req.body,
-                headers: {
-                    ...req.headers,
-                    host: undefined
-                },
-                timeout: 15000,
-                maxBodyLength: Infinity,
-                maxContentLength: Infinity
-            });
+            let requestData;
+            let requestHeaders = {
+                'X-User-Id': req.user?.id || '',
+                'X-User-Name': req.user?.name || '',
+                'X-User-Email': req.user?.email || '',
+                'X-Organization-Id': req.user?.organizationId || '',
+                'X-Facility-Id': req.user?.facilityId || '',
+                'X-Department-Id': req.user?.departmentId || '',
+                'X-User-Role-Id': req.user?.roleId || '',
+                'X-User-Role-Name': req.user?.role?.name || '',
+                'X-User-Permissions': JSON.stringify(userPermissions),
+                'X-User-Department-Assignments': JSON.stringify(req.user?.departmentAssignments || []),
+                'X-Service-Token': config.serviceSecret,
+            };
 
-            return res.status(response.status).json(response.data);
-
-        } catch (error) {
-            console.error(`[PROXY ERROR] ${serviceName}`, error.message);
-
-            if (error.response) {
-                return res.status(error.response.status).json(error.response.data);
+            if (isMultipart) {
+                requestData = req;
+                requestHeaders['Content-Type'] = req.headers['content-type'];
+            } else {
+                requestData = req.body;
+                requestHeaders['Content-Type'] = 'application/json';
             }
 
-            return res.status(500).json({
-                message: 'Gateway error',
-                error: error.message
+            const response = await axios({
+                method: req.method,
+                url: targetUrl,
+                data: requestData,
+                headers: requestHeaders,
+                timeout: 10000,
+                maxBodyLength: Infinity,
+                maxContentLength: Infinity,
             });
+
+            res.status(response.status).json(response.data);
+        } catch (error) {
+            if (error.response) {
+                res.status(error.response.status).json(error.response.data);
+            } else {
+                console.error(`Proxy error to ${serviceName}:`, error.message);
+                res.status(500).json({
+                    message: 'Internal server error',
+                    statusCode: 500,
+                    details: {
+                        code: 'internal_server_error',
+                    },
+                });
+            }
         }
     };
 }
